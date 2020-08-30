@@ -1,0 +1,11 @@
+.card-player {
+    min-height: 100px;
+    min-width: 60px;
+    background-size: cover;
+    transition: .2s;
+}
+
+.card-owned:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+}

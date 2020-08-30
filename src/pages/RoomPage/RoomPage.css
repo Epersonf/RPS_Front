@@ -1,0 +1,11 @@
+section.card-page-sctn {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-around;
+}
+
+.inline-deck {
+    display: flex;
+    justify-content: space-between;
+}

@@ -20,9 +20,12 @@ export default function Card(props) {
         default:
             break;
     }
+
+    function clickCard() {
+        
+    }
+
     return (
-        <div className='card-player'>
-            <img src={card} alt={'Card ' + props.type} />
-        </div>
+        <div onClick={clickCard} className={'card-player' + (props.type !== -1 ? ' card-owned' : '')} style={{backgroundImage: 'url('+ card + ')'}}/>
     )
 }

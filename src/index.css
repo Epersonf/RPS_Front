@@ -22,7 +22,7 @@ code {
   left: 0;
   right: 0;
 
-  border: 3px solid #c4c4c4;
+  border: 1px solid #333;
   border-radius: 10px;
   z-index: 9;
 
@@ -70,4 +70,12 @@ button {
 button:hover {
   background-color: #fafafa;
   color: #333;
+}
+
+.ball {
+  width: 50px;
+  height: 50px;
+  background-color: #333;
+  border-radius: 50%;
+  margin: 0 auto;
 }

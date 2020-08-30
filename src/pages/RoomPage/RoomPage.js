@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './RoomPage.css';
-import { GlobalData } from '../../VariableManager';
 import Deck from './Deck/Deck';
 import { fetchData } from '../../Functions';
+import DeckTypeDetector from './DeckTypeDetector/DeckTypeDetector';
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -27,22 +27,31 @@ export default function RoomPage() {
     useEffect(loop, [updt]);
     //#endregion
 
-    const [cards, setCards] = useState(new Array(4).fill([]));
+    const [info, setInfo] = useState(new Array(4).fill({'name': 'Nullable Entity', 'cards': []}));
     const update = () => {
         fetchData('room/' + roomId, (e) => {
-            setCards(e);
-            console.log(e);
+            let i = -1;
+            e.forEach((elem, index) => {
+                if (elem.cards[0] !== -1) i = index;
+            })
+            e[0] = [e[i], e[i] = e[0]][0];
+            setInfo(e);
         });
     }
 
+    if (!info) {
+        document.location.href = '/';
+        return ('');
+    }
+
     return (
-        <section>
-            <Deck cards={cards[1]}/>
-            <div>
-                <Deck cards={cards[2]}/>
-                <Deck cards={cards[3]}/>
+        <section className='card-page-sctn'>
+            <DeckTypeDetector index={info[1].index} name={info[1].name} cards={info[1].cards}/>
+            <div className='inline-deck'>
+                <DeckTypeDetector index={info[2].index} name={info[2].name} cards={info[2].cards}/>
+                <DeckTypeDetector index={info[3].index} name={info[3].name} cards={info[3].cards}/>
             </div>
-            <Deck cards={cards[0]}/>
+            <DeckTypeDetector index={info[0].index} name={info[0].name} cards={info[0].cards}/>
         </section>
     )
 }
