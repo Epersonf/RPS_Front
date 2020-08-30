@@ -12,3 +12,62 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.pop-up {
+  background-color: #fafafa;
+  position: fixed;
+  
+  width: 250px;
+  margin: 5% auto;
+  left: 0;
+  right: 0;
+
+  border: 3px solid #c4c4c4;
+  border-radius: 10px;
+  z-index: 9;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  gap: .3em;
+
+  box-shadow: 1px 1px 20px #333;
+}
+
+.pop-up input {
+  text-align: center;
+}
+
+.close-x-btn {
+  background-color: #333;
+  color: #fafafa;
+  border: none;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin-left: auto;
+  border-radius: 5px;
+  outline: none;
+}
+
+.close-x-btn:hover  {
+  background-color: red;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #333;
+  transition: .4s;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #fafafa;
+  color: #333;
+}

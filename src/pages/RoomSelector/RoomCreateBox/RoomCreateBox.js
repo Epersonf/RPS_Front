@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './RoomCreateBox.css';
 import { postData } from '../../../Functions';
 import { GlobalData } from '../../../VariableManager';
 
@@ -24,6 +23,7 @@ export default function RoomCreateBox(props) {
 
     return (
         <div className="pop-up">
+            <button className="close-x-btn" onClick={() => props.setPopup(false)}>x</button>
             <h3>Create room</h3>
             <input placeholder='Player name' value={playerName} onChange={(e) => setPlayerName(e.target.value)} type="text" />
             <input placeholder='Room name' value={name} onChange={(e) => setName(e.target.value)} type="text" />
