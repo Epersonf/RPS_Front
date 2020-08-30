@@ -40,6 +40,7 @@ export function ResetGlobalData() {
     GlobalData = {};
     GlobalData['config'] = config;
     GlobalData['config_form'] = configForm;
+    console.log("Resetting data.");
     BakeGlobalData();
 }
 GlobalData['api'] = api;

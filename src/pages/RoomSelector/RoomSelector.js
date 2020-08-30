@@ -4,7 +4,7 @@ import RoomBox from './RoomBox/RoomBox';
 import './RoomSelector.css';
 import RoomCreateBox from './RoomCreateBox/RoomCreateBox';
 import RoomJoinBox from './RoomJoinBox/RoomJoinBox';
-import { GlobalData } from '../../VariableManager';
+import { GlobalData, BakeGlobalData } from '../../VariableManager';
 
 export default function RoomSelector() {
 
@@ -30,7 +30,8 @@ export default function RoomSelector() {
             GlobalData['config_form']['headers']['Authorization'] = e.token;
             GlobalData['room'] = e.id;
             GlobalData['player_name'] = e.player_name;
-            // document.location.href = '/room/' + props.roomInfo.id;
+            BakeGlobalData();
+            document.location.href = '/room/' + e.id;
         })
     }
 

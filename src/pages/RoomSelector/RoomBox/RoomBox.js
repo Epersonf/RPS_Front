@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './RoomBox.css';
-import { postData } from '../../../Functions';
-import { GlobalData } from '../../../VariableManager';
-import RoomJoinBox from '../RoomJoinBox/RoomJoinBox';
 
 export default function RoomBox(props) {
     return (

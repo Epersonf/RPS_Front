@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { postData } from '../../../Functions';
-import { GlobalData } from '../../../VariableManager';
+import { GlobalData, BakeGlobalData } from '../../../VariableManager';
 
 export default function RoomCreateBox(props) {
     const [playerName, setPlayerName] = useState('Player');
@@ -18,6 +18,7 @@ export default function RoomCreateBox(props) {
         GlobalData['config_form']['headers']['Authorization'] = e.token;
         GlobalData['room'] = e.id;
         GlobalData['player_name'] = e.player_name;
+        BakeGlobalData();
         document.location.href = "/room/" + e.id;
     });
 
@@ -28,7 +29,7 @@ export default function RoomCreateBox(props) {
             <input placeholder='Player name' value={playerName} onChange={(e) => setPlayerName(e.target.value)} type="text" />
             <input placeholder='Room name' value={name} onChange={(e) => setName(e.target.value)} type="text" />
             <input placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
-            <select value={maxAmountOfPlayers} onChange={(e) => setMaxAmountOfPlayers(e)}>
+            <select value={maxAmountOfPlayers} onChange={(e) => setMaxAmountOfPlayers(e.target.value)}>
                 <option value={2}>2</option>
                 <option value={3}>3</option>
                 <option value={4}>4</option>
