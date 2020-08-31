@@ -4,6 +4,7 @@ import VERSE from '../../../../assets/VERSE.png';
 import ROCK from '../../../../assets/ROCK.png';
 import PAPER from '../../../../assets/PAPER.png';
 import SCISSOR from '../../../../assets/SCISSOR.png';
+import { postData } from '../../../../Functions';
 
 export default function Card(props) {
     let card = VERSE;
@@ -22,7 +23,9 @@ export default function Card(props) {
     }
 
     function clickCard() {
-        
+        postData('room/' + props.roomId + '/play/' + props.ownerIndex + '/' + props.index, {}, (e) => {
+            console.log(e);
+        });
     }
 
     return (

@@ -8,7 +8,7 @@ export default function Deck(props) {
         <div className='deck-player'>
             {props.cards.map((e, index) => {
                 return (
-                    <Card key={index} type={e} index={index} />
+                    <Card key={index} roomId={props.roomId} ownerIndex={props.index} type={e} index={index} />
                 );
             })}
         </div>

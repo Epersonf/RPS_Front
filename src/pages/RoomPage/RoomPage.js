@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './RoomPage.css';
-import Deck from './Deck/Deck';
 import { fetchData } from '../../Functions';
 import DeckTypeDetector from './DeckTypeDetector/DeckTypeDetector';
+import Chat from './Chat/Chat';
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -28,14 +28,17 @@ export default function RoomPage() {
     //#endregion
 
     const [info, setInfo] = useState(new Array(4).fill({'name': 'Nullable Entity', 'cards': []}));
+    const [chatLog, setChatLog] = useState([]);
     const update = () => {
         fetchData('room/' + roomId, (e) => {
             let i = -1;
-            e.forEach((elem, index) => {
+            if (!e.cards) document.location.href = '/';
+            e.cards.forEach((elem, index) => {
                 if (elem.cards[0] !== -1) i = index;
             })
-            e[0] = [e[i], e[i] = e[0]][0];
-            setInfo(e);
+            e.cards[0] = [e.cards[i], e.cards[i] = e.cards[0]][0];
+            setInfo(e.cards);
+            setChatLog(e.chat);
         });
     }
 
@@ -51,7 +54,8 @@ export default function RoomPage() {
                 <DeckTypeDetector index={info[2].index} name={info[2].name} cards={info[2].cards}/>
                 <DeckTypeDetector index={info[3].index} name={info[3].name} cards={info[3].cards}/>
             </div>
-            <DeckTypeDetector index={info[0].index} name={info[0].name} cards={info[0].cards}/>
+            <DeckTypeDetector roomId={roomId} index={info[0].index} name={info[0].name} cards={info[0].cards}/>
+            <Chat chatLog={chatLog} roomId={roomId} index={info[0].index}/>
         </section>
     )
 }
