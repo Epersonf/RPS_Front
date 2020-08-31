@@ -56,10 +56,13 @@ export default function RoomPage() {
     return (
         <section className='card-page-sctn'>
             <Leaderboard leaderboard={leaderboard} />
-            <DeckTypeDetector index={info[1].index} name={info[1].name} cards={info[1].cards}/>
+            <div className='only-three-people'>
+                <DeckTypeDetector index={info[1].index} name={info[1].name} cards={info[1].cards}/>
+                {(info.length === 3) ? <DeckTypeDetector index={info[2].index} name={info[2].name} cards={info[2].cards}/> : ''}
+            </div>
             <div className='inline-deck'>
-                {(info.length >= 3) ? <DeckTypeDetector index={info[2].index} name={info[2].name} cards={info[2].cards}/> : ''}
-                <MiddleCards middleCards={middleCards} />
+                {(info.length > 3) ? <DeckTypeDetector index={info[2].index} name={info[2].name} cards={info[2].cards}/> : ''}
+                <MiddleCards info={info} middleCards={middleCards} />
                 {(info.length >= 4) ? <DeckTypeDetector index={info[3].index} name={info[3].name} cards={info[3].cards}/> : ''}
             </div>
             <DeckTypeDetector roomId={roomId} index={info[0].index} name={info[0].name} cards={info[0].cards}/>

@@ -10,3 +10,7 @@ section.card-page-sctn {
     display: flex;
     justify-content: space-between;
 }
+
+.only-three-people {
+    display: flex;
+}
