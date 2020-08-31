@@ -3,7 +3,7 @@ import axios from 'axios';
 let api = 
 axios.create(
   {
-      baseURL: 'https://shrouded-sea-24567.herokuapp.com/'
+      baseURL: 'https://epersonrpsbackend.herokuapp.com/'
     // baseURL: 'http://localhost:4000/'
   }
 );
