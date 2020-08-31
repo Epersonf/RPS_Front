@@ -39,7 +39,7 @@ export default function RoomPage() {
             let i = -1;
             if (!e.cards) document.location.href = '/';
             e.cards.forEach((elem, index) => {
-                if (elem.name === GlobalData['player_name']) i = index;
+                if (elem.cards[0] !== -1) i = index;
             })
             e.cards[0] = [e.cards[i], e.cards[i] = e.cards[0]][0];
             setInfo(e.cards);
