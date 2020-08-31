@@ -23,9 +23,7 @@ export default function Card(props) {
     }
 
     function clickCard() {
-        postData('room/' + props.roomId + '/play/' + props.ownerIndex + '/' + props.index, {}, (e) => {
-            console.log(e);
-        });
+        postData('room/' + props.roomId + '/play/' + props.ownerIndex + '/' + props.index, {}, (e) => {});
     }
 
     return (

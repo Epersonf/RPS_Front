@@ -1,0 +1,9 @@
+.leaderboard {
+    width: 200px;
+    max-width: 30vw;
+    background-color: rgba(50, 50, 50, .9);
+    position: absolute;
+    border: 1px solid #333;
+    top: 0;
+    color: white;
+}

@@ -4,6 +4,7 @@ import { fetchData } from '../../Functions';
 import DeckTypeDetector from './DeckTypeDetector/DeckTypeDetector';
 import Chat from './Chat/Chat';
 import MiddleCards from './MiddleCards/MiddleCards';
+import Leaderboard from './Leaderboard/Leaderboard';
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -31,6 +32,7 @@ export default function RoomPage() {
     const [info, setInfo] = useState(new Array(4).fill({'name': 'Nullable Entity', 'cards': []}));
     const [chatLog, setChatLog] = useState([]);
     const [middleCards, setMiddleCards] = useState([]);
+    const [leaderboard, setLeaderboard] = useState([]);
     const update = () => {
         fetchData('room/' + roomId, (e) => {
             let i = -1;
@@ -42,6 +44,7 @@ export default function RoomPage() {
             setInfo(e.cards);
             setChatLog(e.chat);
             setMiddleCards(e.middle_cards);
+            setLeaderboard(e.leaderboard);
         });
     }
 
@@ -52,6 +55,7 @@ export default function RoomPage() {
 
     return (
         <section className='card-page-sctn'>
+            <Leaderboard leaderboard={leaderboard} />
             <DeckTypeDetector index={info[1].index} name={info[1].name} cards={info[1].cards}/>
             <div className='inline-deck'>
                 {(info.length >= 3) ? <DeckTypeDetector index={info[2].index} name={info[2].name} cards={info[2].cards}/> : ''}
