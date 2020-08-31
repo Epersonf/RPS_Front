@@ -1,7 +1,8 @@
 section.card-page-sctn {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
+    padding: 20px 0;
     justify-content: space-around;
 }
 

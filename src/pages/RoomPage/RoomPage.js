@@ -3,6 +3,7 @@ import './RoomPage.css';
 import { fetchData } from '../../Functions';
 import DeckTypeDetector from './DeckTypeDetector/DeckTypeDetector';
 import Chat from './Chat/Chat';
+import MiddleCards from './MiddleCards/MiddleCards';
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -29,6 +30,7 @@ export default function RoomPage() {
 
     const [info, setInfo] = useState(new Array(4).fill({'name': 'Nullable Entity', 'cards': []}));
     const [chatLog, setChatLog] = useState([]);
+    const [middleCards, setMiddleCards] = useState([]);
     const update = () => {
         fetchData('room/' + roomId, (e) => {
             let i = -1;
@@ -39,6 +41,7 @@ export default function RoomPage() {
             e.cards[0] = [e.cards[i], e.cards[i] = e.cards[0]][0];
             setInfo(e.cards);
             setChatLog(e.chat);
+            setMiddleCards(e.middle_cards);
         });
     }
 
@@ -51,8 +54,9 @@ export default function RoomPage() {
         <section className='card-page-sctn'>
             <DeckTypeDetector index={info[1].index} name={info[1].name} cards={info[1].cards}/>
             <div className='inline-deck'>
-                <DeckTypeDetector index={info[2].index} name={info[2].name} cards={info[2].cards}/>
-                <DeckTypeDetector index={info[3].index} name={info[3].name} cards={info[3].cards}/>
+                {(info.length >= 3) ? <DeckTypeDetector index={info[2].index} name={info[2].name} cards={info[2].cards}/> : ''}
+                <MiddleCards middleCards={middleCards} />
+                {(info.length >= 4) ? <DeckTypeDetector index={info[3].index} name={info[3].name} cards={info[3].cards}/> : ''}
             </div>
             <DeckTypeDetector roomId={roomId} index={info[0].index} name={info[0].name} cards={info[0].cards}/>
             <Chat chatLog={chatLog} roomId={roomId} index={info[0].index}/>
