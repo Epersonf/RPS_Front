@@ -25,6 +25,9 @@ export default function RoomSelector() {
             if (e === undefined || e === '') {
                 alert("Falha ao entrar");
                 return;
+            } else if (e.message != null) {
+                alert(e.message);
+                return;
             }
             GlobalData['config']['headers']['Authorization'] = e.token;
             GlobalData['config_form']['headers']['Authorization'] = e.token;
