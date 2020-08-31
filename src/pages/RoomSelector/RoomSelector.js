@@ -32,6 +32,7 @@ export default function RoomSelector() {
             GlobalData['config']['headers']['Authorization'] = e.token;
             GlobalData['config_form']['headers']['Authorization'] = e.token;
             GlobalData['room'] = e.id;
+            GlobalData['player_id'] = e.player_id;
             GlobalData['player_name'] = e.player_name;
             BakeGlobalData();
             document.location.href = '/room/' + e.id;

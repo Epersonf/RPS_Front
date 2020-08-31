@@ -12,6 +12,7 @@ function sleep(ms) {
 }
 
 export default function RoomPage() {
+    const playerId = GlobalData['player_id'];
     let query = document.location.href.split('/');
     let roomId = parseInt(query[query.length - 1]);
 
@@ -36,12 +37,8 @@ export default function RoomPage() {
     const [leaderboard, setLeaderboard] = useState([]);
     const update = () => {
         fetchData('room/' + roomId, (e) => {
-            let i = -1;
             if (!e.cards) document.location.href = '/';
-            e.cards.forEach((elem, index) => {
-                if (elem.cards[0] !== -1) i = index;
-            })
-            e.cards[0] = [e.cards[i], e.cards[i] = e.cards[0]][0];
+            e.cards[0] = [e.cards[playerId], e.cards[playerId] = e.cards[0]][0];
             setInfo(e.cards);
             setChatLog(e.chat);
             setMiddleCards(e.middle_cards);
