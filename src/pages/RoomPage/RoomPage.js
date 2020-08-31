@@ -38,6 +38,7 @@ export default function RoomPage() {
     const update = () => {
         fetchData('room/' + roomId, (e) => {
             if (!e.cards) document.location.href = '/';
+            e.cards = e.cards.sort((a, b) => a.index - b.index);
             e.cards[0] = [e.cards[playerId], e.cards[playerId] = e.cards[0]][0];
             setInfo(e.cards);
             setChatLog(e.chat);
