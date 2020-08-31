@@ -5,6 +5,7 @@ import DeckTypeDetector from './DeckTypeDetector/DeckTypeDetector';
 import Chat from './Chat/Chat';
 import MiddleCards from './MiddleCards/MiddleCards';
 import Leaderboard from './Leaderboard/Leaderboard';
+import { GlobalData } from '../../VariableManager';
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -38,7 +39,7 @@ export default function RoomPage() {
             let i = -1;
             if (!e.cards) document.location.href = '/';
             e.cards.forEach((elem, index) => {
-                if (elem.cards[0] !== -1) i = index;
+                if (elem.name === GlobalData['player_name']) i = index;
             })
             e.cards[0] = [e.cards[i], e.cards[i] = e.cards[0]][0];
             setInfo(e.cards);

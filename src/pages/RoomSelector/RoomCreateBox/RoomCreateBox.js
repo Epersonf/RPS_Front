@@ -26,9 +26,9 @@ export default function RoomCreateBox(props) {
         <div className="pop-up">
             <button className="close-x-btn" onClick={() => props.setPopup(false)}>x</button>
             <h3>Create room</h3>
-            <input placeholder='Player name' value={playerName} onChange={(e) => setPlayerName(e.target.value)} type="text" />
-            <input placeholder='Room name' value={name} onChange={(e) => setName(e.target.value)} type="text" />
-            <input placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
+            <input maxLength={12} placeholder='Player name' value={playerName} onChange={(e) => setPlayerName(e.target.value)} type="text" />
+            <input maxLength={12} placeholder='Room name' value={name} onChange={(e) => setName(e.target.value)} type="text" />
+            <input maxLength={12} placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
             <select value={maxAmountOfPlayers} onChange={(e) => setMaxAmountOfPlayers(e.target.value)}>
                 <option value={2}>2</option>
                 <option value={3}>3</option>
