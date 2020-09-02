@@ -2,5 +2,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: flex-start;
     gap: .1em;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #444;
+    border: 1px solid #222;
+    margin: 0 5px;
+    min-height: 90vh;
 }

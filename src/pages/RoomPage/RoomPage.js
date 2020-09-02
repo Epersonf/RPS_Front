@@ -54,6 +54,7 @@ export default function RoomPage() {
 
     return (
         <section className='card-page-sctn'>
+            <button onClick={() => document.location.href='/'} className='back-button'>{'<'}</button>
             <Leaderboard leaderboard={leaderboard} />
             <div className='only-three-people'>
                 <DeckTypeDetector index={info[1].index} name={info[1].name} cards={info[1].cards}/>

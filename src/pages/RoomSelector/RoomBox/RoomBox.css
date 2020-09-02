@@ -1,5 +1,6 @@
 .room-box {
     border: 1px solid #333;
+    background-color: #888;
     border-radius: 5px;
     display: flex;
     gap: 1em;

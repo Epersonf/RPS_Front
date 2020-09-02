@@ -14,3 +14,9 @@ section.card-page-sctn {
 .only-three-people {
     display: flex;
 }
+
+.back-button {
+    width: 30px;
+    background-color: red;
+    margin: 0 auto;
+}
