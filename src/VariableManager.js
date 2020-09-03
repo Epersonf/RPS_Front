@@ -3,8 +3,7 @@ import axios from 'axios';
 let api = 
 axios.create(
   {
-      baseURL: 'https://epersonrpsbackend.herokuapp.com/'
-    // baseURL: 'http://localhost:4000/'
+    baseURL: 'https://epersonrpsbackend.herokuapp.com/'
   }
 );
 
